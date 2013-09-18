@@ -46,7 +46,10 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	[(ABTableViewCell *)[self superview] drawContentView:rect highlighted:NO];
+    UIView *v = self;
+    while (v && ![v isKindOfClass:[ABTableViewCell class]]) v = v.superview;
+    
+    [(ABTableViewCell *)v drawContentView:rect highlighted:NO];
 }
 
 @end
@@ -62,7 +65,10 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	[(ABTableViewCell *)[self superview] drawContentView:rect highlighted:YES];
+    UIView *v = self;
+    while (v && ![v isKindOfClass:[ABTableViewCell class]]) v = v.superview;
+    
+    [(ABTableViewCell *)v drawContentView:rect highlighted:YES];
 }
 
 @end
